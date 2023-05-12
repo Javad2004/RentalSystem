@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Movie extends Item{
     private String director;
@@ -26,17 +28,4 @@ public class Movie extends Item{
         this.director = director;
     }
 
-    public void rentItem(Customer customer) {
-        this.setAvailable(false);
-        Rental rental = new Rental(customer, this, Integer.parseInt(this.getID() + String.valueOf(customer.getID())));
-        customer.getRentals().add(rental);
-        System.out.println("Movie named " + this.getTitle() + " rented");
-    }
-
-    public void returnItem(Rental rental) {
-        this.setAvailable(true);
-        rental.getCustomer().getRentals().remove(rental);
-        System.out.println("Movie named " + this.getTitle() + " returned");
-        System.out.println("Your lateFee: " + rental.calculateLateFee() + 'T');
-    }
 }
