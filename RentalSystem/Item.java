@@ -1,17 +1,15 @@
 import java.util.Date;
 
 public abstract class Item {
-    private final String title;
-    private final String genre;
-    private final Date releaseDate;
-    private final int ID;
-    private final int rentalFee;
+    private String title;
+    private String genre;
+    private Date releaseDate;
+    private int ID;
     private boolean available = true;
 
-    public Item(String title, String genre, Date releaseDate, int ID, int rentalFee) {
+    public Item(String title, String genre, Date releaseDate, int ID) {
         this.ID = ID;
         this.genre = genre;
-        this.rentalFee = rentalFee;
         this.releaseDate = releaseDate;
         this.title = title;
     }
@@ -32,16 +30,28 @@ public abstract class Item {
         return title;
     }
 
-    public int getRentalFee() {
-        return rentalFee;
-    }
-
     public boolean isAvailable() {
         return available;
     }
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public abstract void rentItem(Customer customer);
