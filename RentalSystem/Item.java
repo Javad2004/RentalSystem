@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public abstract class Item {
     private String title;
@@ -54,6 +56,31 @@ public abstract class Item {
         this.title = title;
     }
 
-    public abstract void rentItem(Customer customer);
-    public abstract void returnItem(Rental rental);
+    public void rentItem(Customer customer) {
+        this.setAvailable(false);
+        Rental rental = new Rental(customer, this, Integer.parseInt(this.getID() + String.valueOf(customer.getID())));
+
+        try {
+            customer.getRentals().add(rental);
+        } catch (NullPointerException e) {
+            List<Rental> rentals = new ArrayList<>();
+            rentals.add(rental);
+            customer.setRentals(rentals);
+        }
+
+        System.out.println("Item named " + this.getTitle() + " rented");
+    }
+
+    public void returnItem(Rental rental) {
+        this.setAvailable(true);
+
+        try {
+            rental.getCustomer().getRentals().remove(rental);
+            System.out.println("Item named " + this.getTitle() + " returned");
+            System.out.println("Your lateFee: " + rental.calculateLateFee() + 'T');
+        } catch (NullPointerException e) {
+            System.out.println("No rentals");
+        }
+
+    }
 }
