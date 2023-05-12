@@ -1,11 +1,11 @@
 import java.util.Date;
 
 public class Movie extends Item{
-    private final String director;
-    private final String cast;
+    private String director;
+    private String cast;
 
-    public Movie(String title, String genre, String director, String cast, Date releaseDate, int ID, int rentalFee) {
-        super(title, genre, releaseDate, ID, rentalFee);
+    public Movie(String title, String genre, String director, String cast, Date releaseDate, int ID) {
+        super(title, genre, releaseDate, ID);
         this.director = director;
         this.cast = cast;
     }
@@ -18,6 +18,13 @@ public class Movie extends Item{
         return cast;
     }
 
+    public void setCast(String cast) {
+        this.cast = cast;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
 
     public void rentItem(Customer customer) {
         this.setAvailable(false);
