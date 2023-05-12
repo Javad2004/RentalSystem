@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RentalStore {
-    private final List<Customer> customers;
-    private final List<Item> items;
-    private final List<Item> availableItems;
+    private List<Customer> customers;
+    private List<Item> items;
+    private List<Item> availableItems;
 
     public RentalStore() {
         this.customers = new ArrayList<>();
@@ -44,6 +44,26 @@ public class RentalStore {
 
     public List<Item> getAvailableItems() {
         return availableItems;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
+
+    public void setAvailableItems(List<Item> availableItems) {
+        this.availableItems = availableItems;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     public void rentItem(Item item, Customer customer) {
