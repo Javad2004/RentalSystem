@@ -106,17 +106,22 @@ public class RentalStore {
                     if (rental.getItem() == item) {
                         itemChecker = true;
                         boolean rentalChecker = false;
-                        for (Rental rental_temp:customer.getRentals()) {
-                            if (rental_temp.getItem() == rental.getItem() && rental_temp.getCustomer() == rental.getCustomer() && rental_temp.getID() == rental.getID()) {
-                                rentalChecker = true;
-                                availableItems.add(item);
-                                item.returnItem(rental);
-                                break;
+                        try {
+                            for (Rental rental_temp:customer.getRentals()) {
+                                if (rental_temp == rental) {
+                                    rentalChecker = true;
+                                    availableItems.add(item);
+                                    item.returnItem(rental);
+                                    break;
+                                }
                             }
+                            if (!rentalChecker) {
+                                System.out.println("Not borrowed");
+                            }
+                        } catch (NullPointerException e) {
+                            System.out.println("No rentals");
                         }
-                        if (!rentalChecker) {
-                            System.out.println("Not borrowed");
-                        }
+
                         break;
                     }
                 }
