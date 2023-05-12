@@ -5,7 +5,7 @@ public abstract class Item {
     private String genre;
     private Date releaseDate;
     private int ID;
-    private boolean available = true;
+    private boolean isAvailable;
 
     public Item(String title, String genre, Date releaseDate, int ID) {
         this.ID = ID;
@@ -31,11 +31,11 @@ public abstract class Item {
     }
 
     public boolean isAvailable() {
-        return available;
+        return isAvailable;
     }
 
     public void setAvailable(boolean available) {
-        this.available = available;
+        isAvailable = available;
     }
 
     public void setGenre(String genre) {
