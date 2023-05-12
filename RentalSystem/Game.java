@@ -1,11 +1,11 @@
 import java.util.Date;
 
 public class Game extends Item{
-    private final String publisher;
-    private final String platform;
+    private String publisher;
+    private String platform;
 
-    public Game(String title, String genre, String publisher, String platform, Date releaseDate, int ID, int rentalFee){
-        super(title, genre, releaseDate, ID, rentalFee);
+    public Game(String title, String genre, String publisher, String platform, Date releaseDate, int ID){
+        super(title, genre, releaseDate, ID);
         this.publisher = publisher;
         this.platform = platform;
     }
@@ -17,6 +17,15 @@ public class Game extends Item{
     public String getPublisher() {
         return publisher;
     }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
 
     public void rentItem(Customer customer) {
         this.setAvailable(false);
@@ -31,4 +40,6 @@ public class Game extends Item{
         System.out.println("Game named " + this.getTitle() + " returned");
         System.out.println("Your lateFee: " + rental.calculateLateFee() + 'T');
     }
+
+
 }
