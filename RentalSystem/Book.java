@@ -1,11 +1,11 @@
 import java.util.Date;
 
 public class Book extends Item{
-    private final String author;
-    private final String publisher;
+    private String author;
+    private String publisher;
 
-    public Book(String title, String genre,String author ,String publisher, Date releaseDate, int ID, int rentalFee) {
-        super(title, genre, releaseDate, ID, rentalFee);
+    public Book(String title, String genre,String author ,String publisher, Date releaseDate, int ID) {
+        super(title, genre, releaseDate, ID);
         this.author = author;
         this.publisher = publisher;
     }
@@ -16,6 +16,14 @@ public class Book extends Item{
 
     public String getAuthor() {
         return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
     public void rentItem(Customer customer) {
@@ -31,4 +39,5 @@ public class Book extends Item{
         System.out.println("Book named " + this.getTitle() + " returned");
         System.out.println("Your lateFee: " + rental.calculateLateFee() + 'T');
     }
+
 }
