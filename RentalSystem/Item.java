@@ -58,7 +58,7 @@ public abstract class Item {
 
     public void rentItem(Customer customer) {
         this.setAvailable(false);
-        Rental rental = new Rental(customer, this, Integer.parseInt(this.getID() + String.valueOf(customer.getID())));
+        Rental rental = new Rental(this, Integer.parseInt(this.getID() + String.valueOf(customer.getID())));
 
         try {
             customer.getRentals().add(rental);
@@ -71,11 +71,11 @@ public abstract class Item {
         System.out.println("Item named " + this.getTitle() + " rented");
     }
 
-    public void returnItem(Rental rental) {
+    public void returnItem(Customer customer, Rental rental) {
         this.setAvailable(true);
 
         try {
-            rental.getCustomer().getRentals().remove(rental);
+            customer.getRentals().remove(rental);
             System.out.println("Item named " + this.getTitle() + " returned");
             System.out.println("Your lateFee: " + rental.calculateLateFee() + 'T');
         } catch (NullPointerException e) {
