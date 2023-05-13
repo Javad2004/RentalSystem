@@ -71,11 +71,11 @@ public abstract class Item {
         System.out.println("Item named " + this.getTitle() + " rented");
     }
 
-    public void returnItem(Customer customer, Rental rental) {
+    public void returnItem(Rental rental) {
         this.setAvailable(true);
 
         try {
-            customer.getRentals().remove(rental);
+            rental.getCustomer().getRentals().remove(rental);
             System.out.println("Item named " + this.getTitle() + " returned");
             System.out.println("Your lateFee: " + rental.calculateLateFee() + 'T');
         } catch (NullPointerException e) {
