@@ -15,7 +15,7 @@ public class Customer {
         this.phone_number = phone_number;
         this.address = address;
         this.ID = ID;
-        this.rentals = new ArrayList<>();
+        rentals = new ArrayList<>();
     }
 
     public int getID() {
