@@ -27,7 +27,7 @@ public class RentalStore {
             if (item_temp == item) {
                 check = true;
                 if (!this.availableItems.contains(item)) {
-                    System.out.println("This item can't be removed because it's being borrowed");
+                    System.out.println("This item can't be removed because it's rented");
                 }
                 else {
                     this.items.remove(item);
@@ -80,7 +80,7 @@ public class RentalStore {
                             item.rentItem(customer);
                         }
                         else {
-                            System.out.println("This item can't be borrowed because it's being borrowed by someone else");
+                            System.out.println("This item can't be rented because it's rented already");
                         }
                         break;
                     }
