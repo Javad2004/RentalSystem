@@ -51,6 +51,7 @@ public class Rental {
         if(diff<=0) {
             return 0;
         }
+
         return lateFee * diff;
     }
 }
